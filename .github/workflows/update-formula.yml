@@ -4,6 +4,9 @@ on:
   repository_dispatch:
     types: [update-formula]
 
+permissions:
+  contents: write
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -23,7 +26,7 @@ jobs:
           # Update version
           sed -i "s/version \".*\"/version \"${VERSION}\"/" "$FORMULA"
 
-          # Update SHA256 hashes — match the sha256 line following each url
+          # Update SHA256 hashes
           python3 - <<'PYEOF'
           import re, os
 
@@ -40,8 +43,6 @@ jobs:
           for target, sha in replacements.items():
               if not sha:
                   continue
-              # Match: url line with target, then sha256 line on next line
-              pattern = rf'(url "https://github.com/bumahkib7/runix-releases/releases/download/v[^"]*/{re.escape("runix-" + target)}.tar.gz"\s*\n\s*sha256 ")[a-fA-F0-9]+|PLACEHOLDER(")'
               formula = re.sub(
                   rf'(url "https://github\.com/bumahkib7/runix-releases/releases/download/v\#\{{version\}}/runix-{re.escape(target)}\.tar\.gz"\s*\n\s*sha256 ")[^"]*(")',
                   rf'\g<1>{sha}\2',
