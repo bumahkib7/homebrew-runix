@@ -1,30 +1,30 @@
 class Runix < Formula
   desc "Zero-config cloud deployment CLI — deploy apps from Git with AI-powered runtime detection"
   homepage "https://runixcloud.dev"
-  version "0.1.0"
+  version "0.2.0"
   license "MIT"
 
   on_macos do
     on_arm do
       url "https://github.com/bumahkib7/runix-releases/releases/download/v#{version}/runix-aarch64-apple-darwin.tar.gz"
-      sha256 "6dbe50050263806cb2b328e59a2017a63c68e04e2c2e33b3522e9af714108bf9"
+      sha256 "bdfa9721ca6f76c3bd267c32fd274c5e91e68359717f3be01d4dc0618cf00611"
     end
 
     on_intel do
       url "https://github.com/bumahkib7/runix-releases/releases/download/v#{version}/runix-x86_64-apple-darwin.tar.gz"
-      sha256 "36a0c4c42e960597293173b98b26821c2a2cbe7ac4818f250c7d48b3b75e018f"
+      sha256 "2beaa75395cb8d4ed570c75be13c01736b2b27c47551bdbcb4067834ecef2899"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/bumahkib7/runix-releases/releases/download/v#{version}/runix-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "e4da0920bd4f3f0cfc42a461b25a269fa06484c3d939063f536f07ad61d1794d"
+      sha256 "b7cdb2717a8dbecbbf15bf617dac2b92085bd9ef9966bd0dc04b24d5785ff635"
     end
 
     on_intel do
       url "https://github.com/bumahkib7/runix-releases/releases/download/v#{version}/runix-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "e8f6b8cd12566ae5ea2dd0409368f240285870138097420394050b09d80796f4"
+      sha256 "ff7ce537bae57572d08ae071f22de2c1411abf7edd5361c8c6ff492156afae27"
     end
   end
 
